@@ -13,15 +13,25 @@
 
 ---
 
+## Repository Structure
+
+- `paper/`: Markdown drafts for all 5 research papers.
+- `paper2_experiments/`: Codebase and raw JSON evaluation logs for Paper 2 (13-LLM Sunk-Cost Fallacy).
+- `experiments/aeos/`: Codebase, runner scripts, and dual-agent logs for Paper 3 (Cognitive Agentic Diversity).
+- `dataset_pipeline/`: Local models and training code for the Paper 4 MoE Hybrid Gatekeeper.
+- `autonomous-lab-director/`: Active development for Paper 5 (The Lab Director).
+
+---
+
 ## The Research Series at a Glance
 
 | # | Paper | Core Question | Headline Finding | Status |
 |:-:|-------|---------------|------------------|:------:|
-| 1 | [**AITL Taxonomy**](https://zenodo.org/records/19551173) | How do we classify AI evaluation loops? | Formal taxonomy: Human-in-the-Loop → AI-in-the-Loop | ✅ Published |
-| 2 | [**The Autonomous Sunk-Cost Fallacy**](https://zenodo.org/records/19846960) | Do LLMs know when to stop? | 13 models tested — general LLMs waste 3,400s in sunk-cost loops; code-tuned models stop in 162s | ✅ Published |
+| 1 | [**AITL Taxonomy**](https://zenodo.org/records/19551173) | How do we classify AI evaluation loops? | Formal taxonomy: Human-in-the-Loop → AI-in-the-Loop | Published |
+| 2 | [**The Autonomous Sunk-Cost Fallacy**](https://zenodo.org/records/19846960) | Do LLMs know when to stop? | 13 models tested — general LLMs waste 3,400s in sunk-cost loops; code-tuned models stop in 162s | Published |
 | 3 | [**Cognitive Agentic Diversity**](#paper-3-cognitive-agentic-diversity) | Can dual-agents fix sunk-cost? | Yes — **10× compute efficiency**, 0 SCE in 7/9 pairings. Plus the **Modality Paradox** | Preprint |
-| 4 | [**Hybrid Gatekeepers & MoE Panels**](#paper-4-hybrid-gatekeepers--moe-reasoning-panels) | Can diverse local models rival frontier APIs? | **+10pp diversity premium** in reasoning; **1,300× latency speedup** in security routing |  Preprint |
-| 5 | [**The Lab Director (Ω Function)**](#paper-5-the-lab-director--the-ω-function) | Can we replace text-based stopping with math? | The Ω output-quality self-measurement function — 4-action decision rule | 🔬 Active |
+| 4 | [**Hybrid Gatekeepers & MoE Panels**](#paper-4-hybrid-gatekeepers--moe-reasoning-panels) | Can diverse local models rival frontier APIs? | **+10pp diversity premium** in reasoning; **1,300× latency speedup** in security routing | Preprint |
+| 5 | [**The Lab Director (Ω Function)**](#paper-5-the-lab-director--the-ω-function) | Can we replace text-based stopping with math? | The Ω output-quality self-measurement function — 4-action decision rule | Active |
 
 ---
 
@@ -35,10 +45,10 @@ When left alone in unbounded loops, LLMs exhibit a **Sunk-Cost Fallacy** — the
 
 | Model Type | Example | Behavior | Avg Iters | Avg Time |
 |------------|---------|----------|:---------:|:--------:|
-| 🔴 General-purpose | `llama3.1:8b`, `gemma4` | Hit 100-iter safety cap, 0 STOP commands | 100 | 3,400s |
-| 🟡 Premium frontier | `gpt-5.4`, `claude-haiku` | Over-engineer with ensembles, 9+ SCE loops | 42–75 | 2,500s+ |
-| 🟢 Code-tuned (modern) | `qwen2.5-coder:7b` | Graceful STOP at optimal, near-zero SCE | 5.6 | 162s |
-| 🔴 Code-tuned (old) | `deepseek-coder:6.7b` | Same failure as general models | 75+ | 3,000s+ |
+| General-purpose | `llama3.1:8b`, `gemma4` | Hit 100-iter safety cap, 0 STOP commands | 100 | 3,400s |
+| Premium frontier | `gpt-5.4`, `claude-haiku` | Over-engineer with ensembles, 9+ SCE loops | 42–75 | 2,500s+ |
+| Code-tuned (modern) | `qwen2.5-coder:7b` | Graceful STOP at optimal, near-zero SCE | 5.6 | 162s |
+| Code-tuned (old) | `deepseek-coder:6.7b` | Same failure as general models | 75+ | 3,000s+ |
 
 **Key insight:** Stopping intelligence is NOT an emergent property of code-specialization — it's a product of modern RLHF alignment.
 
@@ -51,7 +61,7 @@ When left alone in unbounded loops, LLMs exhibit a **Sunk-Cost Fallacy** — the
 | `qwen2.5-coder:7b` | 80.70% | 79.80% | 94.75% |
 
 <details>
-<summary><b>📊 Full 13-model leaderboard</b></summary>
+<summary><b>Full 13-model leaderboard</b></summary>
 
 | Model | Tabular (54 feat) | Text (TF-IDF) | Vision (MNIST) |
 |---|---|---|---|
@@ -94,7 +104,7 @@ When left alone in unbounded loops, LLMs exhibit a **Sunk-Cost Fallacy** — the
 **Same model. Same role. Opposite outcomes.** Task dimensionality dictates whether persistence is a bug or a feature.
 
 <details>
-<summary><b>📊 Full Tabular leaderboards (Single + Dual)</b></summary>
+<summary><b>Full Tabular leaderboards (Single + Dual)</b></summary>
 
 **Single-Agent:**
 
@@ -117,7 +127,7 @@ When left alone in unbounded loops, LLMs exhibit a **Sunk-Cost Fallacy** — the
 </details>
 
 <details>
-<summary><b>📊 Full Vision & Text leaderboards</b></summary>
+<summary><b>Full Vision & Text leaderboards</b></summary>
 
 **Vision Single-Agent:**
 
@@ -170,7 +180,7 @@ When left alone in unbounded loops, LLMs exhibit a **Sunk-Cost Fallacy** — the
 
 ## Paper 5 — The Lab Director & The Ω Function
 
-> 🔬 **Active research** — Replacing text-based stopping with mathematical self-evaluation.
+> **Active research** — Replacing text-based stopping with mathematical self-evaluation.
 
 ### The Problem
 
