@@ -31,6 +31,20 @@ The math-prompt ablation adds 36 runs across `tabular2`, `text`, and `vision`:
 - Summary: `experiments/aeos/aeos_behave/results/math_batch_summary_all_20260522_233615.json`
 - Figure builder: `experiments/aeos/aeos_behave/build_paper3_assets.py`
 
+## Paper 2
+
+Paper 2 is the published sunk-cost behavioral study. The paper PDF is included under `paper/`:
+
+- `paper/2026_Autonomous_SunkCost_AEOS_neuralchemy.pdf`
+
+The experiment engine and scripts live here:
+
+- `paper2_experiments/`
+
+Additional aggregated run artifacts and plots used during Paper 2 development are kept under:
+
+- `experiments/aeos/results/`
+
 ## Repository Structure
 
 | Path | Purpose |
@@ -39,6 +53,8 @@ The math-prompt ablation adds 36 runs across `tabular2`, `text`, and `vision`:
 | `paper2_experiments/` | Paper 2 single-agent sunk-cost experiments |
 | `experiments/aeos/aeos_behave/` | Paper 3 single, dual, tri-agent, and math-prompt AEOS experiments |
 | `docs/` | Supporting documentation |
+
+Note: `experiments/aeos/aeos_behave/results/backup/` contains a small archive of early run JSONs that were moved out of the main results folder to avoid duplication.
 
 ## Reproduction
 
