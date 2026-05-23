@@ -1,62 +1,80 @@
-# AEOS - Autonomous Empirical Optimization System
+# AEOS Research Repository
 
-Neuralchemy Labs research code and paper artifacts for autonomous LLM machine-learning engineering loops.
+Neuralchemy Labs code and paper artifacts for the AEOS line of research (autonomous ML engineering loops).
 
-This repository is now scoped to the AEOS line of work: the AITL taxonomy, the Autonomous Sunk-Cost Fallacy, and Paper 3's asymmetric reviewer-coder experiments. Paper 4 has been separated because its focus is different: local MoE reasoning panels and hybrid security gatekeepers.
+This repo currently tracks the AEOS papers and experiments for:
+1. AITL taxonomy foundations
+2. Autonomous sunk-cost behavior in single-agent loops
+3. Modality-dependent stopping behavior in asymmetric reviewer-coder loops
 
-## Papers
+Paper 4 work (Polyreasoner-focused MoE diversity studies) is being maintained in a separate repository.
 
-| # | Paper | Focus | Status |
+## Quick Start
+
+Use this repository in two main ways:
+1. Reproduce paper artifacts (Paper 2 and Paper 3)
+2. Run/aggregate AEOS experiments from `experiments/aeos/aeos_behave/`
+
+Typical setup:
+
+```bash
+cd experiments/aeos/aeos_behave
+pip install -r requirements.txt
+cp .env.example .env
+```
+
+Then run your target experiment scripts (examples are listed below).
+
+## Paper Map
+
+| Paper | Title | Status | Main Assets |
 |---|---|---|---|
-| 1 | AITL Taxonomy | Classifying human-in-the-loop to AI-in-the-loop evaluation systems | Published |
-| 2 | The Autonomous Sunk-Cost Fallacy | Stopping failures in single-agent autonomous ML loops | Published |
-| 3 | The Modality Paradox in Autonomous LLM Engineering | Asymmetric agent loops, cognitive diversity, and mathematical halting in AEOS | Preprint ready |
-| 4 | Hybrid Gatekeepers and Local MoE Reasoning Panels | Split to a dedicated repository |
-| 5 | The Lab Director and Omega Function | Active continuation |
+| Paper 1 | AITL Taxonomy | Published | `paper/2026_AITL_Taxonomy_neuralchemy.pdf` |
+| Paper 2 | The Autonomous Sunk-Cost Fallacy | Published | `paper/2026_Autonomous_SunkCost_AEOS_neuralchemy.pdf`, `paper2_experiments/` |
+| Paper 3 | The Modality Paradox in Autonomous LLM Engineering | Preprint ready | `paper/Paper3.tex`, `paper/Paper3.pdf`, `experiments/aeos/aeos_behave/` |
+| Paper 4 | Hybrid Gatekeepers and Local MoE Reasoning Panels | Moved out | maintained in separate Polyreasoner repository |
+| Paper 5 | The Lab Director and Omega Function | In progress | early draft files in `paper/` |
 
-## Paper 3
+## Repository Layout
 
-Paper 3 is the current upload-ready manuscript:
+| Path | What it contains |
+|---|---|
+| `paper/` | Manuscript sources (`.tex`), built PDFs, draft markdown files, and shared figures |
+| `paper2_experiments/` | Paper 2 experiment code and instructions |
+| `experiments/aeos/` | AEOS core code and experiment systems |
+| `experiments/aeos/aeos_behave/` | Paper 3 experiment runs, aggregators, analysis scripts, and thread-specific outputs |
+| `docs/` | Supporting documents |
+
+## Paper 3: Reproducibility Path
+
+Primary experiment area:
+
+- `experiments/aeos/aeos_behave/`
+
+Important scripts:
+
+- `run_exp3_dual_tabular.ps1`
+- `run_exp3_dual_vision.ps1`
+- `run_exp3_dual_text.ps1`
+- `run_math_ablation.py`
+- `aggregate_paper3.py`
+- `build_paper3_assets.py`
+
+Main output locations:
+
+- Raw runs: `experiments/aeos/aeos_behave/results/`
+- Aggregated Thread A summary: `experiments/aeos/aeos_behave/paper3_thread_a/paper3_thread_a_results.json`
+- Thread B benchmark assets: `experiments/aeos/aeos_behave/paper3_thread_b/`
+- Thread D frontier benchmark assets: `experiments/aeos/aeos_behave/paper3_thread_d/`
+
+Paper build artifacts:
 
 - Source: `paper/Paper3.tex`
 - PDF: `paper/Paper3.pdf`
 - Draft notes: `paper/Paper3_Draft.md`
-- Figures: `paper/figures/fig1_cross_modality_summary.png` through `paper/figures/fig5_tri_loop_example.png`
+- Figures: `paper/figures/`
 
-Core result: asymmetric reviewer-coder loops reduce sunk-cost behavior in autonomous ML engineering, but the best persistence policy is modality-dependent. Tabular tasks reward quick halting, vision tasks reward higher persistence, and sparse NLP exposes early-stopping boundary conditions.
-
-The math-prompt ablation adds 36 runs across `tabular2`, `text`, and `vision`:
-
-- Runner: `experiments/aeos/aeos_behave/run_math_ablation.py`
-- Summary: `experiments/aeos/aeos_behave/results/math_batch_summary_all_20260522_233615.json`
-- Figure builder: `experiments/aeos/aeos_behave/build_paper3_assets.py`
-
-## Paper 2
-
-Paper 2 is the published sunk-cost behavioral study. The paper PDF is included under `paper/`:
-
-- `paper/2026_Autonomous_SunkCost_AEOS_neuralchemy.pdf`
-
-The experiment engine and scripts live here:
-
-- `paper2_experiments/`
-
-Additional aggregated run artifacts and plots used during Paper 2 development are kept under:
-
-- `experiments/aeos/results/`
-
-## Repository Structure
-
-| Path | Purpose |
-|---|---|
-| `paper/` | Paper sources, PDFs, and figures for the AEOS paper line |
-| `paper2_experiments/` | Paper 2 single-agent sunk-cost experiments |
-| `experiments/aeos/aeos_behave/` | Paper 3 single, dual, tri-agent, and math-prompt AEOS experiments |
-| `docs/` | Supporting documentation |
-
-Note: `experiments/aeos/aeos_behave/results/backup/` contains a small archive of early run JSONs that were moved out of the main results folder to avoid duplication.
-
-## Reproduction
+## Standard Commands
 
 From `experiments/aeos/aeos_behave/`:
 
@@ -66,17 +84,22 @@ python build_paper3_assets.py
 python run_math_ablation.py --all-datasets --repeats 3
 ```
 
-To rebuild Paper 3:
+From `paper/`:
 
 ```bash
-cd paper
 pdflatex -interaction=nonstopmode -halt-on-error Paper3.tex
 pdflatex -interaction=nonstopmode -halt-on-error Paper3.tex
 ```
 
-## Links
+## Notes on Historical Files
+
+- `paper/Paper4.*` and related drafts may still exist as historical snapshots.
+- Canonical Paper 4 / Polyreasoner development should proceed in the dedicated Polyreasoner repository.
+- `experiments/aeos/aeos_behave/results/backup/` stores archived run JSON files that were moved out of the active result folders.
+
+## References
 
 - Website: https://www.neuralchemy.in/
 - Main code repository: https://github.com/m4vic/AEOS
-- Paper 1 Zenodo: https://zenodo.org/records/19551173
-- Paper 2 Zenodo: https://zenodo.org/records/19846960
+- Paper 1 (Zenodo): https://zenodo.org/records/19551173
+- Paper 2 (Zenodo): https://zenodo.org/records/19846960
