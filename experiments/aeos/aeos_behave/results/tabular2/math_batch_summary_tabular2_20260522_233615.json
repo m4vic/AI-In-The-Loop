@@ -1,0 +1,226 @@
+{
+  "timestamp": "20260522_233615",
+  "dataset": "tabular2",
+  "run_tag": "mathprompt",
+  "repeats": 3,
+  "seed_start": 42,
+  "n_samples": 10000,
+  "conditions": [
+    {
+      "condition_key": "single_llama3.1-8b_math",
+      "label": "SINGLE-llama3.1:8b-MATH",
+      "group": "single",
+      "reviewer_model": "llama3.1:8b",
+      "coder_model": "llama3.1:8b"
+    },
+    {
+      "condition_key": "dual_qwen14b_deepseek16b_math",
+      "label": "DUAL-qwen2.5-coder:14b->deepseek-coder-v2:16b-MATH",
+      "group": "dual",
+      "reviewer_model": "qwen2.5-coder:14b",
+      "coder_model": "deepseek-coder-v2:16b"
+    },
+    {
+      "condition_key": "single_qwen2.5-coder-7b_math",
+      "label": "SINGLE-qwen2.5-coder:7b-MATH",
+      "group": "single",
+      "reviewer_model": "qwen2.5-coder:7b",
+      "coder_model": "qwen2.5-coder:7b"
+    },
+    {
+      "condition_key": "dual_llama3.1-8b_qwen2.5-coder-3b_math",
+      "label": "DUAL-llama3.1:8b->qwen2.5-coder:3b-MATH",
+      "group": "dual",
+      "reviewer_model": "llama3.1:8b",
+      "coder_model": "qwen2.5-coder:3b"
+    }
+  ],
+  "aggregate": [
+    {
+      "condition_key": "single_llama3.1-8b_math",
+      "label": "SINGLE-llama3.1:8b-MATH",
+      "runs": 3,
+      "best_accuracy": {
+        "mean": 0.9315,
+        "std": 0.0054,
+        "min": 0.9255,
+        "max": 0.936,
+        "n": 3
+      },
+      "iterations": {
+        "mean": 8.3333,
+        "std": 4.0415,
+        "min": 6.0,
+        "max": 13.0,
+        "n": 3
+      },
+      "sunk_cost_episodes": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "n": 3
+      },
+      "time_seconds": {
+        "mean": 254.4333,
+        "std": 75.2593,
+        "min": 192.0,
+        "max": 338.0,
+        "n": 3
+      },
+      "waste_count": {
+        "mean": 1.0,
+        "std": 1.0,
+        "min": 0.0,
+        "max": 2.0,
+        "n": 3
+      },
+      "stop_reasons": {
+        "Reviewer STOP at iteration 6": 2,
+        "Reviewer STOP at iteration 13": 1
+      },
+      "reviewer_model": "ollama/llama3.1:8b",
+      "coder_model": "ollama/llama3.1:8b"
+    },
+    {
+      "condition_key": "dual_qwen14b_deepseek16b_math",
+      "label": "DUAL-qwen2.5-coder:14b->deepseek-coder-v2:16b-MATH",
+      "runs": 3,
+      "best_accuracy": {
+        "mean": 0.93,
+        "std": 0.0038,
+        "min": 0.9265,
+        "max": 0.934,
+        "n": 3
+      },
+      "iterations": {
+        "mean": 10.0,
+        "std": 3.0,
+        "min": 7.0,
+        "max": 13.0,
+        "n": 3
+      },
+      "sunk_cost_episodes": {
+        "mean": 0.6667,
+        "std": 0.5774,
+        "min": 0.0,
+        "max": 1.0,
+        "n": 3
+      },
+      "time_seconds": {
+        "mean": 956.4333,
+        "std": 388.1138,
+        "min": 508.4,
+        "max": 1189.5,
+        "n": 3
+      },
+      "waste_count": {
+        "mean": 0.3333,
+        "std": 0.5774,
+        "min": 0.0,
+        "max": 1.0,
+        "n": 3
+      },
+      "stop_reasons": {
+        "Reviewer STOP at iteration 7": 1,
+        "Reviewer STOP at iteration 13": 1,
+        "Reviewer STOP at iteration 10": 1
+      },
+      "reviewer_model": "ollama/qwen2.5-coder:14b",
+      "coder_model": "ollama/deepseek-coder-v2:16b"
+    },
+    {
+      "condition_key": "dual_llama3.1-8b_qwen2.5-coder-3b_math",
+      "label": "DUAL-llama3.1:8b->qwen2.5-coder:3b-MATH",
+      "runs": 3,
+      "best_accuracy": {
+        "mean": 0.9297,
+        "std": 0.0038,
+        "min": 0.9275,
+        "max": 0.934,
+        "n": 3
+      },
+      "iterations": {
+        "mean": 7.0,
+        "std": 3.4641,
+        "min": 5.0,
+        "max": 11.0,
+        "n": 3
+      },
+      "sunk_cost_episodes": {
+        "mean": 0.3333,
+        "std": 0.5774,
+        "min": 0.0,
+        "max": 1.0,
+        "n": 3
+      },
+      "time_seconds": {
+        "mean": 208.4,
+        "std": 99.6919,
+        "min": 142.6,
+        "max": 323.1,
+        "n": 3
+      },
+      "waste_count": {
+        "mean": 0.3333,
+        "std": 0.5774,
+        "min": 0.0,
+        "max": 1.0,
+        "n": 3
+      },
+      "stop_reasons": {
+        "Reviewer STOP at iteration 5": 2,
+        "Reviewer STOP at iteration 11": 1
+      },
+      "reviewer_model": "ollama/llama3.1:8b",
+      "coder_model": "ollama/qwen2.5-coder:3b"
+    },
+    {
+      "condition_key": "single_qwen2.5-coder-7b_math",
+      "label": "SINGLE-qwen2.5-coder:7b-MATH",
+      "runs": 3,
+      "best_accuracy": {
+        "mean": 0.928,
+        "std": 0.0022,
+        "min": 0.9255,
+        "max": 0.9295,
+        "n": 3
+      },
+      "iterations": {
+        "mean": 7.3333,
+        "std": 4.0415,
+        "min": 5.0,
+        "max": 12.0,
+        "n": 3
+      },
+      "sunk_cost_episodes": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "n": 3
+      },
+      "time_seconds": {
+        "mean": 289.9,
+        "std": 240.53,
+        "min": 139.3,
+        "max": 567.3,
+        "n": 3
+      },
+      "waste_count": {
+        "mean": 0.3333,
+        "std": 0.5774,
+        "min": 0.0,
+        "max": 1.0,
+        "n": 3
+      },
+      "stop_reasons": {
+        "Reviewer STOP at iteration 5": 2,
+        "Reviewer STOP at iteration 12": 1
+      },
+      "reviewer_model": "ollama/qwen2.5-coder:7b",
+      "coder_model": "ollama/qwen2.5-coder:7b"
+    }
+  ],
+  "run_files_count": 12
+}

@@ -21,6 +21,15 @@ experiments/aeos/aeos_behave/best_*.joblib
 experiments/aeos/aeos_behave/best_*.pth
 experiments/aeos/aeos_behave/data/
 
+# Paper 4 has been split into a dedicated repository.
+paper/Paper4*
+paper/figures/comparative_frontier*.png
+paper/figures/latency_vs_accuracy.png
+paper/figures/per_class_f1.png
+experiments/aeos/aeos_behave/paper3_thread_b/
+experiments/aeos/aeos_behave/paper3_thread_d/
+experiments/aeos/results/comparative_frontier.png
+
 # Blind NAS tuner raw results
 experiments/blind_nas_tuner/results/*.json
 !experiments/blind_nas_tuner/results/loss_curve.png

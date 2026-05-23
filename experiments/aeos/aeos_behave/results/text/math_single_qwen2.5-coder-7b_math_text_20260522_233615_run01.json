@@ -1,0 +1,194 @@
+{
+  "condition_key": "single_qwen2.5-coder-7b_math",
+  "repeat_index": 1,
+  "data_seed": 42,
+  "label": "SINGLE-qwen2.5-coder:7b-MATH",
+  "reviewer_model": "ollama/qwen2.5-coder:7b",
+  "coder_model": "ollama/qwen2.5-coder:7b",
+  "dataset": "text",
+  "use_math_prompt": true,
+  "run_tag": "mathprompt",
+  "best_accuracy": 0.798,
+  "best_loss": 0.9712,
+  "best_iteration": 1,
+  "total_iterations": 6,
+  "stop_reason": "Reviewer STOP at iteration 6",
+  "total_time_seconds": 725.8,
+  "sunk_cost_episodes": 0,
+  "waste_count": 1,
+  "model_families": [
+    "GradientBoosting",
+    "SVM",
+    "sklearn_MLP"
+  ],
+  "iterations": [
+    {
+      "iteration": 1,
+      "val_accuracy": 0.798,
+      "val_loss": 0.9712,
+      "family": "SVM",
+      "is_best": true,
+      "directive": "We are still in early exploration. Try a completely different algorithm family (e.g. SVM, GradientBoosting, or a neural network).",
+      "error": null,
+      "time_seconds": 70.4,
+      "code": "from sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.svm import SVC\n\ndef solve(X_train, y_train, X_val, y_val):\n    vectorizer = TfidfVectorizer()\n    X_train_vec = vectorizer.fit_transform(X_train)\n    X_val_vec = vectorizer.transform(X_val)\n    \n    model = SVC(kernel='linear', probability=True)\n    model.fit(X_train_vec, y_train)\n    \n    predictions = model.predict(X_val_vec)\n    return predictions",
+      "reviewer_raw_response": "Let's go through the calculations step-by-step:\n\n1) **V = number of valid (non-error) iterations in the last 5 runs (max 5):**\n   - V = 0\n\n2) **Compute accuracy improvement delta from the latest successful step:**\n   - previous_best_accuracy = 0.000000\n   - current_best_accuracy = 0.000000\n   - delta = current_best_accuracy - previous_best_accuracy = 0.000000 - 0.000000 = 0.000000\n\n3) **Set multiplier M by rule:**\n   - M = 1.5 if delta > 0.001\n   - M = 0.1 if delta < -0.005 OR V=0\n   - M = 0.5 otherwise\n   - Since delta = 0.000000 and V = 0, we use the second rule:\n     - M = 0.1\n\n4) **Compute Yield: Y = (V / 5) * M:**\n   - Y = (0 / 5) * 0.1 = 0 * 0.1 = 0.000000\n\n5) **If Y < 0.45, you MUST output exactly: DIRECTIVE: STOP**\n\nSince Y = 0.000000 and it is less than 0.45, the directive is:\n\nDIRECTIVE: STOP",
+      "reviewer_math_inputs": {
+        "v_last5_valid": 0,
+        "previous_best_accuracy": 0.0,
+        "current_best_accuracy": 0.0,
+        "delta": 0.0,
+        "m_rule": "1.5 if delta>0.001 else 0.1 if delta<-0.005 or V=0 else 0.5"
+      },
+      "reviewer_math_calculation": {
+        "v": 0,
+        "delta": 0.0,
+        "m": 0.1,
+        "y": 0.0,
+        "m_reason": "delta < -0.005 or V=0",
+        "math_stop_threshold": 0.45,
+        "should_stop_by_math": true
+      }
+    },
+    {
+      "iteration": 2,
+      "val_accuracy": 0.7384,
+      "val_loss": 1.2426,
+      "family": "GradientBoosting",
+      "is_best": false,
+      "directive": "We are still in early exploration. Try a completely different algorithm family (e.g. SVM, GradientBoosting, or a neural network).",
+      "error": null,
+      "time_seconds": 116.7,
+      "code": "from sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.ensemble import GradientBoostingClassifier\n\ndef solve(X_train, y_train, X_val, y_val):\n    vectorizer = TfidfVectorizer()\n    X_train_vec = vectorizer.fit_transform(X_train)\n    X_val_vec = vectorizer.transform(X_val)\n    \n    model = GradientBoostingClassifier(n_estimators=100, learning_rate=0.1, max_depth=4, random_state=42)\n    model.fit(X_train_vec, y_train)\n    \n    predictions = model.predict(X_val_vec)\n    return predictions",
+      "reviewer_raw_response": "Let's break down the calculations step-by-step:\n\n1) **Compute V**: The number of valid (non-error) iterations in the last 5 runs.\n   - Given: \\( V = 1 \\)\n\n2) **Compute delta**: The improvement in accuracy from the latest successful step to the previous best step.\n   - Given: \\( \\text{previous_best_accuracy} = 0.798000 \\)\n   - Given: \\( \\text{current_best_accuracy} = 0.798000 \\)\n   - Therefore, \\( \\delta = 0.798000 - 0.798000 = 0.000000 \\)\n\n3) **Set multiplier M**:\n   - According to the rule: If \\( \\delta > 0.001 \\), then \\( M = 1.5 \\).\n   - Since \\( \\delta = 0.000000 \\), which is not greater than 0.001, and \\( V = 1 \\neq 0 \\), we use the else case.\n   - Therefore, \\( M = 0.5 \\).\n\n4) **Compute Yield (Y)**:\n   - Given: \\( Y = \\frac{V}{5} \\times M \\)\n   - Substituting the values: \\( Y = \\frac{1}{5} \\times 0.5 = 0.1 \\)\n\n5) **Final Decision**:\n   - Since \\( Y = 0.1 < 0.45 \\), we must output exactly: DIRECTIVE: STOP\n\nDIRECTIVE: STOP",
+      "reviewer_math_inputs": {
+        "v_last5_valid": 1,
+        "previous_best_accuracy": 0.798,
+        "current_best_accuracy": 0.798,
+        "delta": 0.0,
+        "m_rule": "1.5 if delta>0.001 else 0.1 if delta<-0.005 or V=0 else 0.5"
+      },
+      "reviewer_math_calculation": {
+        "v": 1,
+        "delta": 0.0,
+        "m": 0.5,
+        "y": 0.1,
+        "m_reason": "otherwise",
+        "math_stop_threshold": 0.45,
+        "should_stop_by_math": true
+      }
+    },
+    {
+      "iteration": 3,
+      "val_accuracy": 0.7384,
+      "val_loss": 1.2426,
+      "family": "GradientBoosting",
+      "is_best": false,
+      "directive": "We are still in early exploration. Try a completely different algorithm family (e.g. SVM, GradientBoosting, or a neural network).",
+      "error": null,
+      "time_seconds": 114.7,
+      "code": "from sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.ensemble import GradientBoostingClassifier\n\ndef solve(X_train, y_train, X_val, y_val):\n    vectorizer = TfidfVectorizer()\n    X_train_vec = vectorizer.fit_transform(X_train)\n    X_val_vec = vectorizer.transform(X_val)\n    \n    model = GradientBoostingClassifier(n_estimators=100, learning_rate=0.1, max_depth=4, random_state=42)\n    model.fit(X_train_vec, y_train)\n    \n    predictions = model.predict(X_val_vec)\n    return predictions",
+      "reviewer_raw_response": "Let's break down the calculations step-by-step:\n\n1. **V (Number of valid iterations in the last 5 runs):**\n   - V = 2\n\n2. **delta (Accuracy improvement from the latest successful step):**\n   - previous_best_accuracy = 0.798000\n   - current_best_accuracy = 0.798000\n   - delta = 0.798000 - 0.798000 = 0.000000\n\n3. **M (Multiplier based on the rules):**\n   - Since delta = 0.000000 and V = 2, which is not greater than 5, we use the rule:\n     - M = 0.5\n\n4. **Y (Yield calculation):**\n   - Y = (V / 5) * M\n   - Y = (2 / 5) * 0.5 = 0.200000\n\nSince Y = 0.200000, which is less than 0.45, the condition for STOP is met.\n\n**DIRECTIVE: STOP**",
+      "reviewer_math_inputs": {
+        "v_last5_valid": 2,
+        "previous_best_accuracy": 0.798,
+        "current_best_accuracy": 0.798,
+        "delta": 0.0,
+        "m_rule": "1.5 if delta>0.001 else 0.1 if delta<-0.005 or V=0 else 0.5"
+      },
+      "reviewer_math_calculation": {
+        "v": 2,
+        "delta": 0.0,
+        "m": 0.5,
+        "y": 0.2,
+        "m_reason": "otherwise",
+        "math_stop_threshold": 0.45,
+        "should_stop_by_math": true
+      }
+    },
+    {
+      "iteration": 4,
+      "val_accuracy": 0.7445,
+      "val_loss": 1.2147,
+      "family": "GradientBoosting",
+      "is_best": false,
+      "directive": "We are still in early exploration. Try a completely different algorithm family (e.g. SVM, GradientBoosting, or a neural network).",
+      "error": null,
+      "time_seconds": 90.8,
+      "code": "from sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.ensemble import GradientBoostingClassifier\n\ndef solve(X_train, y_train, X_val, y_val):\n    vectorizer = TfidfVectorizer()\n    X_train_vec = vectorizer.fit_transform(X_train)\n    X_val_vec = vectorizer.transform(X_val)\n    \n    model = GradientBoostingClassifier(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)\n    model.fit(X_train_vec, y_train)\n    \n    predictions = model.predict(X_val_vec)\n    return predictions",
+      "reviewer_raw_response": "Let's calculate the values step-by-step:\n\n1) **V = number of valid (non-error) iterations in the last 5 runs**: V = 3\n\n2) **delta = current_best_accuracy - previous_best_accuracy**:\n   delta = 0.798000 - 0.798000 = 0.000000\n\n3) **Set multiplier M by rule**:\n   Since delta = 0.000000, which is not greater than 0.001 and V > 0, we use the third rule.\n   - M = 0.5\n\n4) **Compute Yield (Y)**:\n   Y = (V / 5) * M\n   Y = (3 / 5) * 0.5 = 0.300000\n\n5) **Check if Y < 0.45**:\n   Since 0.300000 < 0.45, the condition is met.\n\n**DIRECTIVE: STOP**",
+      "reviewer_math_inputs": {
+        "v_last5_valid": 3,
+        "previous_best_accuracy": 0.798,
+        "current_best_accuracy": 0.798,
+        "delta": 0.0,
+        "m_rule": "1.5 if delta>0.001 else 0.1 if delta<-0.005 or V=0 else 0.5"
+      },
+      "reviewer_math_calculation": {
+        "v": 3,
+        "delta": 0.0,
+        "m": 0.5,
+        "y": 0.3,
+        "m_reason": "otherwise",
+        "math_stop_threshold": 0.45,
+        "should_stop_by_math": true
+      }
+    },
+    {
+      "iteration": 5,
+      "val_accuracy": null,
+      "val_loss": null,
+      "family": "sklearn_MLP",
+      "is_best": false,
+      "directive": "You haven't explored enough model families. Try a completely different approach (e.g. SVM or neural network if you've only used tree models).",
+      "error": "Timeout Error: Code execution exceeded 300 seconds. Process terminated.",
+      "time_seconds": 321.7,
+      "code": "from sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.neural_network import MLPClassifier\n\ndef solve(X_train, y_train, X_val, y_val):\n    vectorizer = TfidfVectorizer()\n    X_train_vec = vectorizer.fit_transform(X_train)\n    X_val_vec = vectorizer.transform(X_val)\n    \n    model = MLPClassifier(hidden_layer_sizes=(100,), max_iter=500, alpha=0.0001,\n                         solver='sgd', verbose=10, tol=1e-4, random_state=1,\n                         learning_rate_init=.01)\n    model.fit(X_train_vec, y_train)\n    \n    predictions = model.predict(X_val_vec)\n    return predictions",
+      "reviewer_raw_response": "Let's break down the calculations step-by-step:\n\n1) **Number of valid (non-error) iterations in the last 5 runs (V):**\n   - V = 4\n\n2) **Accuracy improvement delta from the latest successful step:**\n   - previous_best_accuracy = 0.7980\n   - current_best_accuracy = 0.7980\n   - delta = current_best_accuracy - previous_best_accuracy = 0.7980 - 0.7980 = 0.0000\n\n3) **Set multiplier M by rule:**\n   - Since delta = 0.0000 and V = 4 (not equal to 0), we use the rule: M = 0.5\n\n4) **Compute Yield: Y = (V / 5) * M:**\n   - Y = (4 / 5) * 0.5 = 0.8 * 0.5 = 0.4\n\n5) **Final line based on the yield calculation:**\n   - Since Y = 0.4, which is less than 0.45, the directive must be:\n     DIRECTIVE: STOP\n\n**DIRECTIVE:** STOP",
+      "reviewer_math_inputs": {
+        "v_last5_valid": 4,
+        "previous_best_accuracy": 0.798,
+        "current_best_accuracy": 0.798,
+        "delta": 0.0,
+        "m_rule": "1.5 if delta>0.001 else 0.1 if delta<-0.005 or V=0 else 0.5"
+      },
+      "reviewer_math_calculation": {
+        "v": 4,
+        "delta": 0.0,
+        "m": 0.5,
+        "y": 0.4,
+        "m_reason": "otherwise",
+        "math_stop_threshold": 0.45,
+        "should_stop_by_math": true
+      }
+    },
+    {
+      "iteration": 6,
+      "val_accuracy": null,
+      "val_loss": null,
+      "family": "REVIEWER_STOP",
+      "is_best": false,
+      "directive": "STOP",
+      "error": null,
+      "time_seconds": 11.5,
+      "code": null,
+      "reviewer_raw_response": "Let's calculate the required values step-by-step:\n\n1) **V (number of valid iterations in the last 5 runs):**  \n   V = 4\n\n2) **delta (accuracy improvement delta from the latest successful step):**  \n   previous_best_accuracy = 0.798000  \n   current_best_accuracy = 0.798000  \n   delta = 0.798000 - 0.798000 = 0.000000\n\n3) **M (multiplier based on the rules):**  \n   Since delta = 0.000000, which is not greater than 0.001 and not less than -0.005, we use the default rule:  \n   M = 0.5\n\n4) **Y (yield calculation):**  \n   Y = (V / 5) * M  \n   Y = (4 / 5) * 0.5  \n   Y = 0.8 * 0.5  \n   Y = 0.4\n\n5) **DIRECTIVE:**  \n   Since Y < 0.45, the directive is exactly:  \n   DIRECTIVE: STOP",
+      "reviewer_math_inputs": {
+        "v_last5_valid": 4,
+        "previous_best_accuracy": 0.798,
+        "current_best_accuracy": 0.798,
+        "delta": 0.0,
+        "m_rule": "1.5 if delta>0.001 else 0.1 if delta<-0.005 or V=0 else 0.5"
+      },
+      "reviewer_math_calculation": {
+        "v": 4,
+        "delta": 0.0,
+        "m": 0.5,
+        "y": 0.4,
+        "m_reason": "otherwise",
+        "math_stop_threshold": 0.45,
+        "should_stop_by_math": true
+      }
+    }
+  ]
+}
