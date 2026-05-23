@@ -94,3 +94,4 @@ Where:
 - Copy `.env.example` to `.env` and set model/API credentials.
 - Keep old run archives in `results/backup/` when cleaning active folders.
 - For reproducibility, preserve original JSON files and timestamped outputs.
+- New Polyreasoner/ASRT experiments should go under `../../../../polyreasoner/` to keep Paper 3 paths stable.

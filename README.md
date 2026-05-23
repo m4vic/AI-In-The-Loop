@@ -7,7 +7,7 @@ This repo currently tracks the AEOS papers and experiments for:
 2. Autonomous sunk-cost behavior in single-agent loops
 3. Modality-dependent stopping behavior in asymmetric reviewer-coder loops
 
-Paper 4 work (Polyreasoner-focused MoE diversity studies) is being maintained in a separate repository.
+Polyreasoner work now has a dedicated staging folder in this repo (`polyreasoner/`) so ASRT and MoE diversity work can grow without disturbing Paper 3 release paths.
 
 ## Quick Start
 
@@ -43,6 +43,8 @@ Then run your target experiment scripts (examples are listed below).
 | `paper2_experiments/` | Paper 2 experiment code and instructions |
 | `experiments/aeos/` | AEOS core code and experiment systems |
 | `experiments/aeos/aeos_behave/` | Paper 3 experiment runs, aggregators, analysis scripts, and thread-specific outputs |
+| `polyreasoner/` | New workspace for ASRT and Polyreasoner experiments |
+| `archive/` | Archived older or out-of-scope files (including legacy Paper 4 files) |
 | `docs/` | Supporting documents |
 
 ## Paper 3: Reproducibility Path
@@ -93,8 +95,8 @@ pdflatex -interaction=nonstopmode -halt-on-error Paper3.tex
 
 ## Notes on Historical Files
 
-- `paper/Paper4.*` and related drafts may still exist as historical snapshots.
-- Canonical Paper 4 / Polyreasoner development should proceed in the dedicated Polyreasoner repository.
+- Historical Paper 4 files are archived under `archive/legacy_paper4/`.
+- Active Polyreasoner/ASRT development should be added under `polyreasoner/`.
 - `experiments/aeos/aeos_behave/results/backup/` stores archived run JSON files that were moved out of the active result folders.
 
 ## References
