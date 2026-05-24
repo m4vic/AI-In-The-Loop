@@ -16,23 +16,27 @@ __pycache__/
 *.onnx
 *.h5
 
-# AITL experiment heavyweight artifacts
-experiments/aeos/aeos_behave/best_*.joblib
-experiments/aeos/aeos_behave/best_*.pth
-experiments/aeos/aeos_behave/data/
+# Paper 2: Sunk-Cost Fallacy active logs & weights
+aeos_sunk_cost/best_*.joblib
+aeos_sunk_cost/best_*.pth
+aeos_sunk_cost/results/
+aeos_sunk_cost/data/
 
-# Paper 4 has been split into a dedicated repository.
-paper/Paper4*
-paper/figures/comparative_frontier*.png
-paper/figures/latency_vs_accuracy.png
-paper/figures/per_class_f1.png
-experiments/aeos/aeos_behave/paper3_thread_b/
-experiments/aeos/aeos_behave/paper3_thread_d/
-experiments/aeos/results/comparative_frontier.png
+# Paper 3: Modality Paradox active logs & weights
+experiments/modality_paradox/best_*.joblib
+experiments/modality_paradox/best_*.pth
+experiments/modality_paradox/data/
+experiments/modality_paradox/results/
+experiments/modality_paradox/paper3_thread_b/
+experiments/modality_paradox/paper3_thread_d/
 
-# Blind NAS tuner raw results
-experiments/blind_nas_tuner/results/*.json
-!experiments/blind_nas_tuner/results/loss_curve.png
+# Paper 1: AITL Blind NAS active logs & weights
+experiments/aitl_blind_nas/results/*.json
+!experiments/aitl_blind_nas/results/loss_curve.png
+
+# Archive folders containing heavy logs (local only, ignored from GitHub)
+/archive/
+/archive/**
 
 # LaTeX build artifacts
 *.aux

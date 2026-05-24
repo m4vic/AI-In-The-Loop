@@ -1,107 +1,156 @@
-# AEOS Research Repository
+# AITL & AEOS Research Repository 
 
-Neuralchemy Labs code and paper artifacts for the AEOS line of research (autonomous ML engineering loops).
+[![Paper 1: AITL Taxonomy](https://img.shields.io/badge/Paper_1-AITL_Taxonomy-red?logo=read-the-docs&logoColor=white)](https://zenodo.org/records/19551173)
+[![Paper 2: Sunk-Cost Fallacy](https://img.shields.io/badge/Paper_2-Sunk_Cost_Fallacy-green?logo=read-the-docs&logoColor=white)](https://zenodo.org/records/19846960)
+[![Paper 3: Modality Paradox](https://img.shields.io/badge/Paper_3-Modality_Paradox-blue?logo=read-the-docs&logoColor=white)](#paper-3-the-modality-paradox)
+[![Website](https://img.shields.io/badge/Website-neuralchemy.in-brightgreen?logo=google-chrome&logoColor=white)](https://www.neuralchemy.in/)
 
-This repo currently tracks the AEOS papers and experiments for:
-1. AITL taxonomy foundations
-2. Autonomous sunk-cost behavior in single-agent loops
-3. Modality-dependent stopping behavior in asymmetric reviewer-coder loops
+Welcome to the consolidated research repository of **Neuralchemy Labs** for **AI In The Loop (AITL)** and **Autonomous Empirical Optimization System (AEOS)** research. 
 
-Polyreasoner work now has a dedicated staging folder in this repo (`polyreasoner/`) so ASRT and MoE diversity work can grow without disturbing Paper 3 release paths.
+This repository contains the complete experimental code, active search loops, configurations, data loaders, and paper manuscripts for **Paper 1 (Taxonomy & PoC)**, **Paper 2 (Sunk-Cost Fallacy)**, and **Paper 3 (Modality Paradox)**. 
 
-## Quick Start
+---
 
-Use this repository in two main ways:
-1. Reproduce paper artifacts (Paper 2 and Paper 3)
-2. Run/aggregate AEOS experiments from `experiments/aeos/aeos_behave/`
+## 🏛️ Repository File Structure
 
-Typical setup:
+To make navigation simple and intuitive, the repository is organized into five main areas:
 
-```bash
-cd experiments/aeos/aeos_behave
-pip install -r requirements.txt
-cp .env.example .env
+```text
+AI-In-The-Loop/                     # Repository Root
+├── archive/                        # Legacy and out-of-scope paper archives (ignored from GitHub)
+│   ├── legacy_paper1/              # Paper 1 taxonomy manuscript drafts
+│   ├── legacy_paper4/              # Paper 4 (Gatekeepers & MoE) archived sources
+│   ├── legacy_paper5/              # Paper 5 (Lab Director & Closed-Loop) archives
+│   ├── legacy_blind_nas/           # Legacy AITL Blind NAS PoC code
+│   └── legacy_AITL_main/           # Archived raw files from the original AITL repo
+├── docs/                           # Core research & architectural documentation
+├── paper/                          # Scientific manuscript directories
+│   ├── paper1_taxonomy/            # Paper 1: AITL Taxonomy manuscript, built PDF & figures
+│   ├── paper2_sunk_cost/           # Paper 2: Sunk-Cost Fallacy manuscript & built PDF
+│   └── paper3_modality_paradox/    # Paper 3: Modality Paradox LaTeX sources & PDF
+├── aeos_sunk_cost/                 # ACTIVE CODE: Paper 2 (Sunk-Cost Fallacy)
+│   ├── results/                    # Sunk-Cost single-agent run metrics
+│   ├── agent.py                    # Monolithic autonomous agent
+│   └── runner.py                   # Single-agent driver
+└── experiments/                    # ACTIVE CODE: Active experimental sweeps
+    ├── aitl_blind_nas/             # ACTIVE CODE: Paper 1 Proof-of-Concept (Blind NAS Tuner)
+    │   ├── concept.md              # Blinding mechanism details
+    │   ├── agent.py                # Architecture search agent
+    │   ├── trainer.py              # PyTorch training sandbox
+    │   └── runner.py               # Main tuner loop runner
+    └── modality_paradox/           # ACTIVE CODE: Paper 3 (Modality Paradox)
+        ├── results/                # Cross-modality JSON logs
+        ├── runner_critic.py        # Asymmetric Coder-Reviewer loop
+        ├── run_math_ablation.py    # Math prompt self-reflection sweep
+        ├── aggregate_paper3.py     # Aggregator tool
+        └── build_paper3_assets.py  # High-res chart generator
 ```
 
-Then run your target experiment scripts (examples are listed below).
+---
 
-## Paper Map
+## 📖 The Research Trilogy
 
-| Paper | Title | Status | Main Assets |
-|---|---|---|---|
-| Paper 1 | AITL Taxonomy | Published | `paper/2026_AITL_Taxonomy_neuralchemy.pdf` |
-| Paper 2 | The Autonomous Sunk-Cost Fallacy | Published | `paper/2026_Autonomous_SunkCost_AEOS_neuralchemy.pdf`, `paper2_experiments/` |
-| Paper 3 | The Modality Paradox in Autonomous LLM Engineering | Preprint ready | `paper/Paper3.tex`, `paper/Paper3.pdf`, `experiments/aeos/aeos_behave/` |
-| Paper 4 | Hybrid Gatekeepers and Local MoE Reasoning Panels | Moved out | maintained in separate Polyreasoner repository |
-| Paper 5 | The Lab Director and Omega Function | In progress | early draft files in `paper/` |
+```mermaid
+graph TD
+    subgraph Theoretical Foundations
+        P1[Paper 1: AITL Taxonomy] -->|Defines Paradigm| Loop[Autonomous Self-Improving Loops]
+        Loop -->|Validates Tabula Rasa| POC[AITL Blind NAS PoC]
+    end
+    
+    subgraph Core System Experiments
+        Loop -->|Single-Agent Loops| P2[Paper 2: Sunk-Cost Fallacy]
+        Loop -->|Asymmetric Dual-Agent Loops| P3[Paper 3: Modality Paradox]
+    end
+    
+    style P1 fill:#7f1d1d,stroke:#b91c1c,stroke-width:2px,color:#fff
+    style P2 fill:#064e3b,stroke:#047857,stroke-width:2px,color:#fff
+    style P3 fill:#1e3a8a,stroke:#1d4ed8,stroke-width:2px,color:#fff
+    style POC fill:#4b5563,stroke:#374151,stroke-width:2px,color:#fff
+```
 
-## Repository Layout
+### 🔴 Paper 1: AITL Taxonomy & Foundations
+* **Title**: *AI In The Loop (AITL): A Systems Taxonomy for Closed-Loop Autonomous Evaluation*
+* **Manuscript Directory**: [`paper/paper1_taxonomy/`](file:///f:/AI-IN-THE-LOOP/aitl-paper/paper/paper1_taxonomy)
+* **Active Codebase**: [`experiments/aitl_blind_nas/`](file:///f:/AI-IN-THE-LOOP/aitl-paper/experiments/aitl_blind_nas)
+* **Paradigm**: Establishes the core systems taxonomy of AI In The Loop. Demonstrates how to prove empirical optimization self-improvement by "blinding" the search LLM to prevent zero-shot parametric memorization of standard datasets.
 
-| Path | What it contains |
-|---|---|
-| `paper/` | Manuscript sources (`.tex`), built PDFs, draft markdown files, and shared figures |
-| `paper2_experiments/` | Paper 2 experiment code and instructions |
-| `experiments/aeos/` | AEOS core code and experiment systems |
-| `experiments/aeos/aeos_behave/` | Paper 3 experiment runs, aggregators, analysis scripts, and thread-specific outputs |
-| `polyreasoner/` | New workspace for ASRT and Polyreasoner experiments |
-| `archive/` | Archived older or out-of-scope files (including legacy Paper 4 files) |
-| `docs/` | Supporting documents |
+---
 
-## Paper 3: Reproducibility Path
+### 🟢 Paper 2: Sunk-Cost Fallacy (AEOS Core)
+* **Title**: *The Autonomous Sunk-Cost Fallacy: Stopping Failures and Meta-Reasoning in LLMs Deployed within AEOS*
+* **Manuscript Directory**: [`paper/paper2_sunk_cost/`](file:///f:/AI-IN-THE-LOOP/aitl-paper/paper/paper2_sunk_cost)
+* **Active Codebase**: [`aeos_sunk_cost/`](file:///f:/AI-IN-THE-LOOP/aitl-paper/aeos_sunk_cost)
+* **Paradigm**: Demonstrates how a monolithic, single-agent loop trapped in an open-ended code optimization environment struggles with cognitive anchoring, repeating failed strategies over dozens of iterations (the "sunk-cost fallacy" for AI agents).
 
-Primary experiment area:
+```mermaid
+flowchart TD
+    A[Dataset] --> B[Monolithic Agent]
+    B -->|Writes PyTorch Code| C(Sandboxed Sandbox)
+    C -->|Calculates Val Loss| B
+    B -->|Anchored Strategy Loop| B
+    B -->|Fails to Terminate| B
+```
 
-- `experiments/aeos/aeos_behave/`
+---
 
-Important scripts:
+### 🔵 Paper 3: The Modality Paradox
+* **Title**: *The Modality Paradox in Autonomous LLM Engineering: Stopping Behaviors in Asymmetric Reviewer-Coder Loops*
+* **Manuscript Directory**: [`paper/paper3_modality_paradox/`](file:///f:/AI-IN-THE-LOOP/aitl-paper/paper/paper3_modality_paradox)
+* **Active Codebase**: [`experiments/modality_paradox/`](file:///f:/AI-IN-THE-LOOP/aitl-paper/experiments/modality_paradox)
+* **Paradigm**: Establishes that LLM stopping thresholds are highly task- and modality-dependent. Introduces an asymmetric dual-agent loop (Reviewer + Coder) and benchmarks it across structured tabular, text, and vision workloads.
 
-- `run_exp3_dual_tabular.ps1`
-- `run_exp3_dual_vision.ps1`
-- `run_exp3_dual_text.ps1`
-- `run_math_ablation.py`
-- `aggregate_paper3.py`
-- `build_paper3_assets.py`
+```mermaid
+flowchart TD
+    Reviewer[Reviewer Agent <br> *Sets Strategy & Holds Stop Key*] -->|DIRECTIVE| Coder[Coder Agent <br> *Writes ML Code*]
+    Coder -->|Execute| Sandbox(Isolated Sandbox)
+    Sandbox -->|Metrics & Tracebacks| Reviewer
+```
 
-Main output locations:
+---
 
-- Raw runs: `experiments/aeos/aeos_behave/results/`
-- Aggregated Thread A summary: `experiments/aeos/aeos_behave/paper3_thread_a/paper3_thread_a_results.json`
-- Thread B benchmark assets: `experiments/aeos/aeos_behave/paper3_thread_b/`
-- Thread D frontier benchmark assets: `experiments/aeos/aeos_behave/paper3_thread_d/`
+## 🛠️ Execution & Reproducibility Guide
 
-Paper build artifacts:
-
-- Source: `paper/Paper3.tex`
-- PDF: `paper/Paper3.pdf`
-- Draft notes: `paper/Paper3_Draft.md`
-- Figures: `paper/figures/`
-
-## Standard Commands
-
-From `experiments/aeos/aeos_behave/`:
-
+### 1. Environment Setup
+Copy `.env.example` to `.env` inside either code directory and add your LLM API keys:
 ```bash
+cp aeos_sunk_cost/.env.example aeos_sunk_cost/.env
+# Or for Paper 3:
+cp experiments/modality_paradox/.env.example experiments/modality_paradox/.env
+```
+
+### 2. Run Paper 1 (Blind NAS Tuner PoC)
+Run the blinded neural architecture search:
+```bash
+cd experiments/aitl_blind_nas
+python runner.py
+```
+*Observe `results/loss_curve.png` to watch validation loss trend downwards over iterations, mathematically demonstrating the self-improving properties of AITL.*
+
+### 3. Run Paper 2 (Sunk-Cost Fallacy)
+Run the monolithic engineering loops:
+```bash
+cd aeos_sunk_cost
+python runner.py
+```
+
+### 4. Run Paper 3 (Modality Paradox)
+Run math-prompt self-reflection sweeps and aggregate figures:
+```bash
+cd experiments/modality_paradox
+python run_math_ablation.py
 python aggregate_paper3.py
 python build_paper3_assets.py
-python run_math_ablation.py --all-datasets --repeats 3
 ```
+All compiled publication-ready SVG/PNG figures and LaTeX tabular models are saved directly inside `paper/paper3_modality_paradox/figures/`.
 
-From `paper/`:
+---
 
-```bash
-pdflatex -interaction=nonstopmode -halt-on-error Paper3.tex
-pdflatex -interaction=nonstopmode -halt-on-error Paper3.tex
-```
+## 🔍 Scientific Citation & Zenodo Indexing
 
-## Notes on Historical Files
+> [!NOTE]
+> **Manuscript Separation Policy**
+> - **GitHub** hosts the active, reproducible code, datasets, and configurations.
+> - **Zenodo** hosts the official, permanent, immutable preprint PDFs. 
+> - LaTeX templates are included in `paper/` for structural development. For formal scientific citations, please use the Zenodo records referenced in `CITATION.cff`.
 
-- Historical Paper 4 files are archived under `archive/legacy_paper4/`.
-- Active Polyreasoner/ASRT development should be added under `polyreasoner/`.
-- `experiments/aeos/aeos_behave/results/backup/` stores archived run JSON files that were moved out of the active result folders.
-
-## References
-
-- Website: https://www.neuralchemy.in/
-- Main code repository: https://github.com/m4vic/AEOS
-- Paper 1 (Zenodo): https://zenodo.org/records/19551173
-- Paper 2 (Zenodo): https://zenodo.org/records/19846960
+*Neuralchemy Labs Research Series — [neuralchemy.in](https://www.neuralchemy.in/)*
